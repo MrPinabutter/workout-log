@@ -1,38 +1,85 @@
-.App {
-  text-align: center;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  border: 0;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+header {
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  align-items: center;
+  display: flex;
+  height: 120px;
 }
 
-.App-link {
-  color: #61dafb;
+h1 {
+  font-size: 24;
+  font-weight: bold;
+  font-family: 'Poppins', sans-serif;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
+
+label {
+  width: 600px;
+  font-family: 'Poppins', sans-serif;
+}
+
+form {
+  display: flex;
+  height: 180px;
+  width: 600px;
+  border: 2px solid black;
+  justify-content: space-between;
+  align-items: center;
+  padding: 40px;
+}
+
+#time {
+  height: 30px;
+  width: 120px;
+  padding: 8px;
+  border: solid 1px black;
+  margin-right: 10px;
+  font-family: 'Poppins', sans-serif;
+}
+
+select {
+  width: 100px;
+  height: 30px;
+  border: solid 1px black;
+  background-color: white;
+  font-family: 'Poppins', sans-serif;
+}
+
+select option {
+  font-family: 'Poppins', sans-serif;
+}
+
+.date-input {
+  font-family: 'Poppins', sans-serif;
+  height: 30px;
+  margin-right: 8px;
+}
+
+.add {
+  height: 30px;
+  width: 70px;
+  background-color: rgb(238, 176, 62);
+  border: solid 1px black;
+  box-shadow: 2.5px 3px 1px black;
+  font-family: 'Poppins', sans-serif;
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.add:active {
+  box-shadow: none;
+  outline: none;
+  background-color: rgb(255, 207, 117);
+}
+
