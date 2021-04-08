@@ -83,8 +83,21 @@ select option {
   background-color: rgb(255, 207, 117);
 }
 
-table {
+.table-container::-webkit-scrollbar {
+  display: none; /* Chrome */
+}
+
+.table-container {
   margin-top: 40px;
+  max-height: 454px;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}
+
+
+table {
   border: 2px solid black;
   font-family: 'Poppins', sans-serif;
   width: 600px;
@@ -98,4 +111,38 @@ th {
 
 th, td {
   padding: 15px;
+}
+
+#button-table-container {
+  display: flex; 
+  justify-content: center; 
+  align-items: center;
+}
+
+.remove-button {
+  width: 20px; 
+  height: 20px;
+  border-radius: 10px;
+  background-color: #FF0005;
+  justify-content: center;
+  align-items: center; 
+  display: flex;
+  color: white; 
+  /* border: 2px solid black; */
+  box-shadow: 1.5px 1px 0 black;
+  font-weight: bold;
+  font-size: 16px;
+}
+
+.remove-button:active {
+  box-shadow: none;
+  background-color: #FF4D4F;
+}
+
+
+h2 {
+  margin-top: 40px;
+  font-family: 'Poppins';
+  font-size: 18px;
+  /* font-weight: 500; */
 }

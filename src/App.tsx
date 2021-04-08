@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import './App.css';
 
-interface logs {
+interface LogProp {
   time: number;
   work: string;
   date: string;
@@ -12,7 +12,11 @@ function App() {
   const [work, setWork] = useState('Run');
   const [date, setDate] = useState('');
 
-  const [data, setData] = useState<logs[]>();
+  const [data, setData] = useState<LogProp[]>();
+
+  const [hours, setHours] = useState(0);
+
+  const reducer = (accumulator:number, currentValue:number) => accumulator + currentValue;
 
   useEffect(() => {
     let worklogs = localStorage.getItem('@WorkLogData')
@@ -23,7 +27,15 @@ function App() {
     }
   }, []);
 
-  function handleSaveLog(e: any, log: any) {
+  useEffect(() => {
+    const times = data?.map(works => {
+      return works.time
+    })
+    setHours(times?.reduce(reducer) || 0);
+    
+  }, [data])
+
+  function handleSaveLog(e: any, log: LogProp) {
     e.preventDefault()
     if (data){
       setData([...data, log])
@@ -31,6 +43,18 @@ function App() {
       setData([log])
     }
     console.log(data);
+    localStorage.setItem('@WorkLogData', JSON.stringify(data))
+  }
+
+  function handleRemove(e: any, idx: number) {
+    e.preventDefault()
+    if (data){
+      let copy = [...data];
+      copy.splice(idx, 1);
+      setData(copy);
+    }else{
+      setData([])
+    }
     localStorage.setItem('@WorkLogData', JSON.stringify(data))
   }
 
@@ -58,26 +82,32 @@ function App() {
             <button className="add" type="submit" onClick={e => handleSaveLog(e, {time, work, date})}>Add</button>
           </div>
         </form>
+        <div className="table-container">
+          <table >
+            <thead>
+              <th>Time</th>
+              <th>Type</th>
+              <th>Date</th>
+              <th>Remove</th>
+            </thead>
 
-        <table >
-          <thead>
-            <th>Time</th>
-            <th>Type</th>
-            <th>Date</th>
-            <th>Remove</th>
-          </thead>
-
-          <tbody>
-          {data && data.map((log, idx) => (
-              <tr key={`${idx}`}>
-                <td>{`${log.time}hr`}</td>
-                <td>{`${log.work}`}</td>
-                <td>{`${log.date}`}</td>
-                <td style={{display: 'flex', justifyContent: 'center', alignItems: 'center'}}><div style={{width: 20, height: 20, borderRadius: 10, backgroundColor: 'red', justifyContent: 'center', alignItems: 'center', display: 'flex', color: 'white', border: '2px solid black'}}>-</div></td>
-              </tr>
-          ))}
-          </tbody>
-        </table>
+            <tbody>
+            {data && data.map((log, idx) => (
+                <tr key={`${idx}`}>
+                  <td>{`${log.time}hr`}</td>
+                  <td>{`${log.work}`}</td>
+                  <td>{`${log.date}`}</td>
+                  <td id="button-table-container">
+                    <button className="remove-button" onClick={e => handleRemove(e, idx)}>-</button>
+                    </td>
+                </tr>
+            ))}
+            </tbody>
+          </table>
+        </div>
+        <h2>
+          {hours} Hours of exercice! 
+        </h2>
       </div>
     </div>
   );
