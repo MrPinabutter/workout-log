@@ -1,8 +1,38 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import './App.css';
 
+interface logs {
+  time: number;
+  work: string;
+  date: string;
+}
+
 function App() {
+  const [time, setTime] = useState(0);
+  const [work, setWork] = useState('Run');
   const [date, setDate] = useState('');
+
+  const [data, setData] = useState<logs[]>();
+
+  useEffect(() => {
+    let worklogs = localStorage.getItem('@WorkLogData')
+    if(worklogs !== 'undefined'){
+      if(worklogs !== null){
+        setData(JSON.parse(worklogs))
+      }
+    }
+  }, []);
+
+  function handleSaveLog(e: any, log: any) {
+    e.preventDefault()
+    if (data){
+      setData([...data, log])
+    }else{
+      setData([log])
+    }
+    console.log(data);
+    localStorage.setItem('@WorkLogData', JSON.stringify(data))
+  }
 
   return (
     <div className="App">
@@ -15,20 +45,39 @@ function App() {
         <label htmlFor="form">Insert an item</label>
         <form>
           <div>
-            <input type="number" id="time" placeholder="Time spent" value={date} onChange={(e) => setDate(e.target.value)}/>
-            <select name="works" id="work">
-              <option value="run">Run</option>
-              <option value="swimming">Swimming</option>
-              <option value="mercedes">Bike</option>
+            <input type="number" id="time" placeholder="Time spent" value={time} onChange={e => setTime(Number(e.target.value))}/>
+            <select name="works" value={work} onChange={e => setWork(e.target.value)} id="work">
+              <option value="Run">Run</option>
+              <option value="Swimming">Swimming</option>
+              <option value="Bike">Bike</option>
             </select>
           </div>
 
           <div>
-            <input type="date" className="date-input" name="date"/>
-            <button className="add" type="submit" onClick={(e) => e.preventDefault()}>Add</button>
+            <input type="date" value={date} onChange={e => setDate(e.target.value)} className="date-input" name="date"/>
+            <button className="add" type="submit" onClick={e => handleSaveLog(e, {time, work, date})}>Add</button>
           </div>
         </form>
-        <hr style={{height:4, color: 'black'}}></hr>
+
+        <table >
+          <thead>
+            <th>Time</th>
+            <th>Type</th>
+            <th>Date</th>
+            <th>Remove</th>
+          </thead>
+
+          <tbody>
+          {data && data.map((log, idx) => (
+              <tr key={`${idx}`}>
+                <td>{`${log.time}hr`}</td>
+                <td>{`${log.work}`}</td>
+                <td>{`${log.date}`}</td>
+                <td style={{display: 'flex', justifyContent: 'center', alignItems: 'center'}}><div style={{width: 20, height: 20, borderRadius: 10, backgroundColor: 'red', justifyContent: 'center', alignItems: 'center', display: 'flex', color: 'white', border: '2px solid black'}}>-</div></td>
+              </tr>
+          ))}
+          </tbody>
+        </table>
       </div>
     </div>
   );

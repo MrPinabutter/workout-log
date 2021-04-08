@@ -31,7 +31,7 @@ label {
 
 form {
   display: flex;
-  height: 180px;
+  height: 150px;
   width: 600px;
   border: 2px solid black;
   justify-content: space-between;
@@ -64,6 +64,7 @@ select option {
   font-family: 'Poppins', sans-serif;
   height: 30px;
   margin-right: 8px;
+  border: 1px solid black;
 }
 
 .add {
@@ -79,7 +80,22 @@ select option {
 
 .add:active {
   box-shadow: none;
-  outline: none;
   background-color: rgb(255, 207, 117);
 }
 
+table {
+  margin-top: 40px;
+  border: 2px solid black;
+  font-family: 'Poppins', sans-serif;
+  width: 600px;
+}
+
+th {
+  background-color: rgb(216, 216, 216);
+  justify-content: flex-start;
+  text-align: left;
+}
+
+th, td {
+  padding: 15px;
+}
