@@ -31,7 +31,12 @@ function App() {
     const times = data?.map(works => {
       return works.time
     })
-    setHours(times?.reduce(reducer) || 0);
+    if(times?.length){
+      setHours(times?.reduce(reducer) || 0);
+    }else{
+      setHours(0);
+    }
+
     
   }, [data])
 
