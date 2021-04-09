@@ -1,0 +1,54 @@
+
+form {
+  display: flex;
+  height: 150px;
+  width: 600px;
+  border: 2px solid black;
+  justify-content: space-between;
+  align-items: center;
+  padding: 40px;
+}
+
+#time {
+  height: 30px;
+  width: 120px;
+  padding: 8px;
+  border: solid 1px black;
+  margin-right: 10px;
+  font-family: 'Poppins', sans-serif;
+}
+
+select {
+  width: 100px;
+  height: 30px;
+  border: solid 1px black;
+  background-color: white;
+  font-family: 'Poppins', sans-serif;
+}
+
+select option {
+  font-family: 'Poppins', sans-serif;
+}
+
+.date-input {
+  font-family: 'Poppins', sans-serif;
+  height: 30px;
+  margin-right: 8px;
+  border: 1px solid black;
+}
+
+.add {
+  height: 30px;
+  width: 70px;
+  background-color: rgb(238, 176, 62);
+  border: solid 1px black;
+  box-shadow: 2.5px 3px 0 black;
+  font-family: 'Poppins', sans-serif;
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.add:active {
+  box-shadow: none;
+  background-color: rgb(255, 207, 117);
+}

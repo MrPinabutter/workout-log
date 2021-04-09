@@ -1,0 +1,18 @@
+.remove-button {
+  width: 24px; 
+  height: 24px;
+  border-radius: 15px;
+  background-color: #FF0005;
+  justify-content: center;
+  align-items: center; 
+  display: flex;
+  color: white; 
+  box-shadow: 1.5px 1px 0 black;
+  font-weight: bold;
+  font-size: 16px;
+}
+
+.remove-button:active {
+  box-shadow: none;
+  background-color: #ff6567;
+}

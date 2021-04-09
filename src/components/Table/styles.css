@@ -1,0 +1,38 @@
+.table-container::-webkit-scrollbar {
+  display: none; /* Chrome */
+}
+
+.table-container {
+  margin-top: 40px;
+  max-height: 454px;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}
+
+table {
+  border: 2px solid black;
+  font-family: 'Poppins', sans-serif;
+  width: 600px;
+}
+
+thead {
+  background-color: rgb(216, 216, 216);
+}
+
+th {
+  background-color: rgb(216, 216, 216);
+  justify-content: flex-start;
+  text-align: left;
+}
+
+th, td {
+  padding: 15px;
+}
+
+#button-table-container {
+  display: flex; 
+  justify-content: center; 
+  align-items: center;
+}
