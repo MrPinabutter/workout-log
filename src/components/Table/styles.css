@@ -15,15 +15,15 @@ table {
   border: 2px solid black;
   font-family: 'Poppins', sans-serif;
   width: 600px;
+  border-collapse: collapse;  
 }
 
 thead {
-  background-color: rgb(216, 216, 216);
-  border-collapse: collapse;
+  background-color: rgb(228, 228, 228);
 }
 
 th {
-  background-color: rgb(216, 216, 216);
+  background-color: rgb(228, 228, 228);
   justify-content: flex-start;
   text-align: left;
 }

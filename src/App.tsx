@@ -37,7 +37,7 @@ function App() {
   function handleRemove(e: any, idx: number) {
     e.preventDefault()
     
-    if(data?.length == 1){
+    if(data?.length === 1){
       setHours(0)
     }
 

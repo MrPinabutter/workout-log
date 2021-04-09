@@ -22,7 +22,7 @@ export default function Table({data, handleRemove}: TableProps) {
           <th>Time</th>
           <th>Type</th>
           <th>Date</th>
-          <th>Remove</th>
+          <th style={{textAlign: 'center'}}>Remove</th>
         </thead>
 
         <tbody>

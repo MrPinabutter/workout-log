@@ -14,7 +14,7 @@ interface LogProp {
 }
 
 export default function Form({data, setData}: FormProps) {
-  const [time, setTime] = useState(0);
+  const [time, setTime] = useState(1);
   const [work, setWork] = useState('Run');
   const [date, setDate] = useState('');
 
@@ -49,7 +49,7 @@ export default function Form({data, setData}: FormProps) {
       <label htmlFor="form">Insert an item</label>
       <form>
         <div>
-          <input type="number" id="time" placeholder="Time spent" value={time} onChange={e => setTime(Number(e.target.value))}/>
+          <input min={1} type="number" id="time" placeholder="Time spent" value={time} onChange={e => setTime(Number(e.target.value))}/>
           <select name="works" value={work} onChange={e => setWork(e.target.value)} id="work">
             <option value="Run">Run</option>
             <option value="Swimming">Swimming</option>
