@@ -1,3 +1,7 @@
+label {
+  width: 580px;
+  font-family: 'Poppins', sans-serif;
+}
 
 form {
   display: flex;

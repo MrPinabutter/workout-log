@@ -42,10 +42,8 @@ function App() {
       let copy = [...data];
       copy.splice(idx, 1);
       setData(copy);
-    }else{
-      setData([])
+      localStorage.setItem('@WorkLogData', JSON.stringify(copy))
     }
-    localStorage.setItem('@WorkLogData', JSON.stringify(data))
   }
 
   return (
@@ -56,7 +54,6 @@ function App() {
         </h1>
       </header>
       <div className="container" style={{flexDirection: 'column'}}>
-        <label htmlFor="form">Insert an item</label>
         <Form data={data} setData={setData}/>
         <Table data={data} handleRemove={handleRemove} />
         <h2>

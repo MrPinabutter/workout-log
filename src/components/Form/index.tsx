@@ -37,24 +37,28 @@ export default function Form({data, setData}: FormProps) {
     }else{
       setData([log])
     }
+    
     localStorage.setItem('@WorkLogData', JSON.stringify(data))
   }
 
   return (
-    <form>
-      <div>
-        <input type="number" id="time" placeholder="Time spent" value={time} onChange={e => setTime(Number(e.target.value))}/>
-        <select name="works" value={work} onChange={e => setWork(e.target.value)} id="work">
-          <option value="Run">Run</option>
-          <option value="Swimming">Swimming</option>
-          <option value="Bike">Bike</option>
-        </select>
-      </div>
+    <>
+      <label htmlFor="form">Insert an item</label>
+      <form>
+        <div>
+          <input type="number" id="time" placeholder="Time spent" value={time} onChange={e => setTime(Number(e.target.value))}/>
+          <select name="works" value={work} onChange={e => setWork(e.target.value)} id="work">
+            <option value="Run">Run</option>
+            <option value="Swimming">Swimming</option>
+            <option value="Bike">Bike</option>
+          </select>
+        </div>
 
-      <div>
-        <input type="date" value={date} onChange={e => setDate(e.target.value)} className="date-input" name="date"/>
-        <button className="add" type="submit" onClick={e => handleSaveLog(e, {time, work, date})}>Add</button>
-      </div>
-    </form>
+        <div>
+          <input type="date" value={date} onChange={e => setDate(e.target.value)} className="date-input" name="date"/>
+          <button className="add" type="submit" onClick={e => handleSaveLog(e, {time, work, date})}>Add</button>
+        </div>
+      </form>
+    </>
   );
 }

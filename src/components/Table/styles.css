@@ -19,6 +19,7 @@ table {
 
 thead {
   background-color: rgb(216, 216, 216);
+  border-collapse: collapse;
 }
 
 th {
