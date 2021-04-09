@@ -27,6 +27,9 @@ export default function Form({data, setData}: FormProps) {
       return;
     };
 
+    const formatDate = new Date(log.date)
+    log.date = `${formatDate.getDate()+1}/${formatDate.getMonth()+1}/${formatDate.getFullYear()}` 
+
     if(log.time <= 0){
       alert('You must provide a time bigger than zero');
       return;

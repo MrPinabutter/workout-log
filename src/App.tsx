@@ -31,13 +31,16 @@ function App() {
     })
     if(times?.length){
       setHours(times?.reduce(reducer) || 0);
-    }else{
-      setHours(0);
     }
   }, [data])
 
   function handleRemove(e: any, idx: number) {
     e.preventDefault()
+    
+    if(data?.length == 1){
+      setHours(0)
+    }
+
     if (data){
       let copy = [...data];
       copy.splice(idx, 1);

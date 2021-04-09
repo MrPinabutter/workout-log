@@ -7,7 +7,7 @@
   align-items: center; 
   display: flex;
   color: white; 
-  box-shadow: 1.5px 1px 0 black;
+  box-shadow: 1.5px 1px 0px black;
   font-weight: bold;
   font-size: 16px;
 }
