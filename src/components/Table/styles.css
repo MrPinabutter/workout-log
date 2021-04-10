@@ -28,6 +28,10 @@ th {
   text-align: left;
 }
 
+.thead-center{
+  text-align: center;
+}
+
 th, td {
   padding: 15px;
 }

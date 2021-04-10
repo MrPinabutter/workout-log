@@ -4,10 +4,10 @@ import RemoveButton from '../RemoveButton';
 import './styles.css';
 
 interface LogProp {
-  time: number;
-  work: string;
-  date: string;
-};
+  workoutTime: number;
+  workoutActivities: string;
+  workouDate: string;
+}
 
 interface TableProps {
   data: LogProp[] | undefined;
@@ -22,15 +22,15 @@ export default function Table({data, handleRemove}: TableProps) {
           <th>Time</th>
           <th>Type</th>
           <th>Date</th>
-          <th style={{textAlign: 'center'}}>Remove</th>
+          <th className="thead-center">Remove</th>
         </thead>
 
         <tbody>
         {data && data.map((log, idx) => (
             <tr key={`${idx}`}>
-              <td>{`${log.time}hr`}</td>
-              <td>{`${log.work}`}</td>
-              <td>{`${log.date}`}</td>
+              <td>{`${log.workoutTime}hr`}</td>
+              <td>{`${log.workoutActivities}`}</td>
+              <td>{`${log.workouDate}`}</td>
               <td id="button-table-container">
                 <RemoveButton handleRemove={handleRemove} idx={idx} />
               </td>

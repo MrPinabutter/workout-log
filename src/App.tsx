@@ -5,14 +5,14 @@ import Table from './components/Table'
 import Form from './components/Form'
 
 interface LogProp {
-  time: number;
-  work: string;
-  date: string;
+  workoutTime: number;
+  workoutActivities: string;
+  workouDate: string;
 }
 
 function App() {
   const [data, setData] = useState<LogProp[]>();
-  const [hours, setHours] = useState(0);
+  const [workoutHoursSpent, setWorkoutHoursSpent] = useState(0);
 
   const reducer = (accumulator:number, currentValue:number) => accumulator + currentValue;
 
@@ -26,19 +26,17 @@ function App() {
   }, []);
 
   useEffect(() => {
-    const times = data?.map(works => {
-      return works.time
-    })
+    const times = data?.map(works => works.workoutTime)
     if(times?.length){
-      setHours(times?.reduce(reducer) || 0);
+      setWorkoutHoursSpent(times?.reduce(reducer) || 0);
     }
   }, [data])
 
-  function handleRemove(e: any, idx: number) {
+  const handleRemove = (e: any, idx: number) => {
     e.preventDefault()
     
     if(data?.length === 1){
-      setHours(0)
+      setWorkoutHoursSpent(0)
     }
 
     if (data){
@@ -56,11 +54,11 @@ function App() {
           Workout Log 
         </h1>
       </header>
-      <div className="container" style={{flexDirection: 'column'}}>
+      <div className="container">
         <Form data={data} setData={setData}/>
         <Table data={data} handleRemove={handleRemove} />
         <h2>
-          {hours} Hours of exercices! 
+          {workoutHoursSpent} Hours of exercices! 
         </h2>
       </div>
     </div>
